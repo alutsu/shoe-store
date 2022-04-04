@@ -8,14 +8,20 @@ services:
       - postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgres
+    mem_limit: 512m
+    mem_reservation: 128M
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.1.2
     environment:
       discovery.type: single-node
     ports:
       - "9200:9200"
+    mem_limit: 512m
+    mem_reservation: 128M
   redis:
     image: redis
+    mem_limit: 512m
+    mem_reservation: 128M
 
   # FRONTEND
   frontend:
@@ -32,7 +38,7 @@ services:
     image: shoe-store_api
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/app
+      - ./api:/app
       - gems:/gems
     ports:
       - "3000:3000"
