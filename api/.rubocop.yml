@@ -1,0 +1,18 @@
+AllCops:
+  Exclude:
+    - "spec/**/*"
+    - "db/schema.rb"
+  TargetRubyVersion: 3.0.2
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 120
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
