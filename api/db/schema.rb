@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_003032) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_12_011450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_003032) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "store_events", force: :cascade do |t|
+    t.integer "inventory"
+    t.bigint "store_id", null: false
+    t.bigint "shoe_models_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shoe_models_id"], name: "index_store_events_on_shoe_models_id"
+    t.index ["store_id"], name: "index_store_events_on_store_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -37,4 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_003032) do
 
   add_foreign_key "inventories", "shoe_models", column: "shoe_models_id"
   add_foreign_key "inventories", "stores"
+  add_foreign_key "store_events", "shoe_models", column: "shoe_models_id"
+  add_foreign_key "store_events", "stores"
 end
