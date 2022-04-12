@@ -10,14 +10,6 @@ services:
       POSTGRES_PASSWORD: postgres
     mem_limit: 512m
     mem_reservation: 128M
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.1.2
-    environment:
-      discovery.type: single-node
-    ports:
-      - "9200:9200"
-    mem_limit: 512m
-    mem_reservation: 128M
   redis:
     image: redis
     mem_limit: 512m
@@ -44,13 +36,38 @@ services:
       - "3000:3000"
     environment:
       RAILS_ENV: development
-      ELASTICSEARCH_URL: http://elasticsearch:9200
       REDIS_URL: redis://redis:6379
     depends_on:
       - db
-      - elasticsearch
       - redis
-
+  sidekiq:
+    image: shoe-store_api
+    command: "sidekiq -C config/sidekiq.yml"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./api:/app
+  receiver:
+    image: shoe-store_api
+    command: bin/rails r receiver.rb
+    depends_on:
+      - db
+      - redis
+      - sender
+    volumes:
+      - ./api:/app
+    mem_limit: 128M
+    mem_reservation: 64M
+  sender:
+    build: ./websocket
+    command: bin/websocketd --port=8080 ruby inventory.rb
+    volumes:
+      - ./websocket:/sender
+    ports:
+      - "8080:8080"
+    mem_limit: 128M
+    mem_reservation: 64M
 volumes:
   postgres:
   gems:
