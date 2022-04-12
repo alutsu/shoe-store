@@ -6,12 +6,13 @@ STORE_STORES.each do |store_name|
 end
 
 SHOES_MODELS.each do |shoe_model_name|
-  shoe_model = ShoeModel.create(name: shoe_model_name )
+  shoe_model = ShoeModel.create!(name: shoe_model_name)
 
   # Base inventory
   STORE_STORES.each do |store_name|
+    amount = rand(1..100)
     store = Store.find_by(name: store_name)
-    StoreShoeModelInventory.create(store_id: store.id, shoe_model_id: shoe_model.id, amount: 50)
-    Actions::CreateJob.perform_async({ store: store_name, model: shoe_model_name, inventory: 50 })
+    Inventory.create!(store_id: store.id, shoe_model: shoe_model, amount: amount)
+    Events::CreateJob.perform_async({ store: store_name, model: shoe_model_name, inventory: amount }.stringify_keys)
   end
 end

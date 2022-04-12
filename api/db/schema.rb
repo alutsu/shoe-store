@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_011450) do
   create_table "inventories", force: :cascade do |t|
     t.bigint "shoe_models_id", null: false
     t.bigint "store_id", null: false
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shoe_models_id"], name: "index_inventories_on_shoe_models_id"
@@ -30,9 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_011450) do
   end
 
   create_table "store_events", force: :cascade do |t|
-    t.integer "inventory"
     t.bigint "store_id", null: false
     t.bigint "shoe_models_id", null: false
+    t.string "name"
+    t.integer "change"
+    t.integer "inventory"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shoe_models_id"], name: "index_store_events_on_shoe_models_id"
