@@ -2,23 +2,21 @@ module Api
   module V1
     module Dashboard
       class StoresController < ApplicationController
-        before_action :set_store, only: %i[show update destroy]
+        before_action :set_store, only: %i[show]
 
         # GET /stores
         def index
-          @stores = Store.all
+          @stores = Store.includes(:shoe_models).order(:name).page(params[:page])
+        end
 
-          render json: @stores
+        def show
+          @shoe_models = @store.shoe_models.order(:name)
         end
 
         private
 
         def set_store
-          @store = Store.find(params[:id])
-        end
-
-        def store_params
-          params.require(:store).permit(:name)
+          @store = Store.includes(:shoe_models).find(params[:id])
         end
       end
     end

@@ -10,15 +10,15 @@ module Events
     def call
       inventory = Inventory.find_by(store: store, shoe_model: shoe_model)
 
-      updated_inventory = new_amount - (inventory&.amount || 0)
+      updated_inventory = new_amount - inventory.amount
 
-      inventory.update(amount: new_amount) if updated_inventory.positive?
+      inventory.update!(amount: new_amount)
 
       # Stores the event
       StoreEvent.create!(
-        store_id: store.id,
-        shoe_models_id: shoe_model.id,
-        name: event_name,
+        store: store,
+        shoe_model: shoe_model,
+        name: event_name(updated_inventory),
         change: updated_inventory,
         inventory: new_amount
       )
@@ -28,8 +28,8 @@ module Events
 
     attr_accessor :store, :shoe_model, :updated_inventory, :new_amount
 
-    def event_name
-      updated_inventory.positive? ? 'increase' : 'decrease'
+    def event_name(updated_inventory)
+      updated_inventory >= 0 ? 'increase' : 'decrease'
     end
   end
 end

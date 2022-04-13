@@ -4,8 +4,6 @@ module Api
       class ShoeModelsController < ApplicationController
         def index
           @shoe_models = ShoeModel.all
-
-          render json: @shoe_models
         end
 
         private
