@@ -29,7 +29,7 @@ module Events
     attr_accessor :store, :shoe_model, :updated_inventory, :new_amount
 
     def event_name(updated_inventory)
-      updated_inventory >= 0 ? 'increase' : 'decrease'
+      updated_inventory >= 0 ? StoreEvent::EVENT_TYPES[:increase] : StoreEvent::EVENT_TYPES[:decrease]
     end
   end
 end
