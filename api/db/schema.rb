@@ -15,12 +15,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_011450) do
   enable_extension "plpgsql"
 
   create_table "inventories", force: :cascade do |t|
-    t.bigint "shoe_models_id", null: false
+    t.bigint "shoe_model_id", null: false
     t.bigint "store_id", null: false
     t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shoe_models_id"], name: "index_inventories_on_shoe_models_id"
+    t.index ["shoe_model_id"], name: "index_inventories_on_shoe_model_id"
     t.index ["store_id"], name: "index_inventories_on_store_id"
   end
 
@@ -32,13 +32,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_011450) do
 
   create_table "store_events", force: :cascade do |t|
     t.bigint "store_id", null: false
-    t.bigint "shoe_models_id", null: false
+    t.bigint "shoe_model_id", null: false
     t.string "name"
     t.integer "change"
     t.integer "inventory"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["shoe_models_id"], name: "index_store_events_on_shoe_models_id"
+    t.index ["shoe_model_id"], name: "index_store_events_on_shoe_model_id"
     t.index ["store_id"], name: "index_store_events_on_store_id"
   end
 
@@ -48,8 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_011450) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "inventories", "shoe_models", column: "shoe_models_id"
+  add_foreign_key "inventories", "shoe_models"
   add_foreign_key "inventories", "stores"
-  add_foreign_key "store_events", "shoe_models", column: "shoe_models_id"
+  add_foreign_key "store_events", "shoe_models"
   add_foreign_key "store_events", "stores"
 end
