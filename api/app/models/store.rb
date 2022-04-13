@@ -5,6 +5,8 @@ class Store < ApplicationRecord
 
   paginates_per 10
 
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
+
   def models_count
     shoe_models.count
   end
