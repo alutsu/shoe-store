@@ -1,11 +1,13 @@
 {
   "extends": ["airbnb", "airbnb-typescript"],
   "parserOptions": {
-    "project": "tsconfig.json"
+    "project": "./tsconfig.json"
   },
   "rules": {
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "object-curly-newline": ["error", { "multiline": true }]
+    "object-curly-newline": ["error", { "multiline": true }],
+    "@typescript-eslint/no-unused-vars": "error",
+    "react/react-in-jsx-scope": "off"
   }
 }
