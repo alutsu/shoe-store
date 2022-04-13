@@ -18,14 +18,13 @@ gem 'sidekiq'
 
 gem 'graphql'
 
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'kaminari'
 
 gem 'eventmachine'
 gem 'faye-websocket'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -55,9 +54,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'simplecov', require: false
-
-  gem 'debase'
-  gem 'ruby-debug-ide'
 end
 
 group :development do
