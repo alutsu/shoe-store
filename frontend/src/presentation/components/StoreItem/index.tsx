@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Store } from '@/domain/models/store';
+
+export type Store = {
+  id: number;
+  name: string;
+  total_orders: number;
+  inventories: number;
+};
 
 type Props = {
   store: Store;
@@ -19,7 +25,7 @@ const StoreItem: React.FC<Props> = ({ store }: Props) => (
     </td>
     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
       <Link to="/" className="text-indigo-600 hover:text-indigo-900">
-        Edit
+        Open
         <span className="sr-only">, {store.name}</span>
       </Link>
     </td>

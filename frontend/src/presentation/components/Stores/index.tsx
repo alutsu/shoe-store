@@ -1,5 +1,5 @@
+import { StoreContext } from 'presentation/context/store/getStore';
 import React, { useContext } from 'react';
-import StoreContext from 'presentation/context/store/getStore';
 import StoreItem from '../StoreItem';
 
 const Stores: React.FC = () => {
@@ -31,7 +31,7 @@ const Stores: React.FC = () => {
                     Total Orders
                   </th>
                   <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                    <span className="sr-only">Edit</span>
+                    <span className="sr-only">Open</span>
                   </th>
                 </tr>
               </thead>
