@@ -4,7 +4,7 @@ import { StoresParams } from 'domain/useCases/stores';
 export class GetStores {
   constructor(
     private readonly url: string,
-    private readonly httpGetClient: HttpGetClient,
+    private readonly httpGetClient: HttpGetClient<any>,
   ) {}
 
   async index(params: StoresParams): Promise<void> {
