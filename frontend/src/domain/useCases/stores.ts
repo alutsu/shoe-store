@@ -1,5 +1,9 @@
 import { Store } from '../models/store';
 
+export type StoresParams = {
+  id: string;
+};
+
 export interface Stores {
-  getStores(): Promise<Store[]>;
+  getStores(params: StoresParams): Promise<Store[]>;
 }

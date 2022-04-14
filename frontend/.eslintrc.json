@@ -6,12 +6,14 @@
   "rules": {
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "object-curly-newline": ["error", { "multiline": true }],
+    "object-curly-newline": ["error", { "consistent": true }],
     "@typescript-eslint/no-unused-vars": "error",
     "react/react-in-jsx-scope": "off",
     "class-methods-use-this": "off",
     "max-classes-per-file": "off",
     "import/prefer-default-export": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "@typescript-eslint/lines-between-class-members": "off"
   }
 }

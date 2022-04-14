@@ -1,5 +1,6 @@
 export type HttpGetParams = {
   url: string;
+  id?: string;
 };
 
 export interface HttpGetClient {

@@ -1,4 +1,5 @@
 import { HttpGetClient } from 'data/protocols/http/httpGetClient';
+import { StoresParams } from 'domain/useCases/stores';
 
 export class GetStores {
   constructor(
@@ -6,7 +7,7 @@ export class GetStores {
     private readonly httpGetClient: HttpGetClient,
   ) {}
 
-  async index(): Promise<void> {
-    await this.httpGetClient.get({ url: this.url });
+  async index(params: StoresParams): Promise<void> {
+    await this.httpGetClient.get({ url: this.url, id: params.id });
   }
 }
