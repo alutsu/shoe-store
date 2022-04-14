@@ -1,5 +1,6 @@
 import React from 'react';
+import Login from './presentation/pages/login/Login';
 
-export default function App() {
-  return <h1>Hello World</h1>;
-}
+const App: React.FC = () => <Login />;
+
+export default App;

@@ -9,7 +9,7 @@ class StoreEvent < ApplicationRecord
 
   validates :store, presence: true
   validates :shoe_model, presence: true
-  validates :name, presence: true, inclusion: { in: EVENT_TYPES.keys }
+  validates :name, presence: true, inclusion: { in: EVENT_TYPES.values }
   validates :change, numericality: { only_integer: true }
   validates :inventory, numericality: { only_integer: true }
 end

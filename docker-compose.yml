@@ -17,12 +17,14 @@ services:
 
   # FRONTEND
   frontend:
-    build: ./frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
     volumes:
-      - ./frontend:/app
       - /app/node_modules
+      - ./frontend:/app
     ports:
-      - "3001:3001"
+      - "5000:3000"
 
   # Backend API
   api:
