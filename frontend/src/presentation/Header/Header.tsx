@@ -6,8 +6,10 @@ const Header: React.FC = () => {
 
   const getClassName = useCallback(
     (pathname) => {
-      // Hardcoding /store/:id route
-      if (pathname === location.pathname) {
+      if (
+        pathname === location.pathname ||
+        (pathname === '/stores' && location.pathname.includes('/stores'))
+      ) {
         return 'text-pink-500 px-3 py-2 text-sm font-medium';
       }
 
