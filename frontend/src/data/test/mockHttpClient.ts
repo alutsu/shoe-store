@@ -1,7 +1,7 @@
 import {
   HttpGetClient,
   HttpGetParams,
-} from 'data/protocols/http/httpGetClient';
+} from '@/data/protocols/http/httpGetClient';
 
 export class HttpGetClientSpy implements HttpGetClient<any> {
   url?: string;

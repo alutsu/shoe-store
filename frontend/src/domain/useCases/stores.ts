@@ -1,4 +1,4 @@
-import { Store } from '../models/store';
+import { Store } from '@/domain/models/store';
 
 export type StoresParams = {
   id: string;

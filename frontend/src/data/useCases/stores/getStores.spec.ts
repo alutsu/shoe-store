@@ -1,6 +1,7 @@
 import faker from '@faker-js/faker';
-import { mockStore } from '../../../domain/test/mockStore';
-import { HttpGetClientSpy } from '../../test/mockHttpClient';
+import { HttpGetClientSpy } from '@/data/test';
+import { mockStore } from '@/domain/test/mockStore';
+
 import { GetStores } from './getStores';
 
 type SutTypes = {
