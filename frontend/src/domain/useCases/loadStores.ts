@@ -1,9 +1,9 @@
 import { Store } from '@/domain/models/store';
 
 export type StoresParams = {
-  id: string;
+  id?: string;
 };
 
-export interface Stores {
+export interface LoadStores {
   getStores(params: StoresParams): Promise<Store[]>;
 }

@@ -1,5 +1,5 @@
 import { HttpGetClient } from '@/data/protocols/http/httpGetClient';
-import { StoresParams } from '@/domain/useCases/stores';
+import { StoresParams } from '@/domain/useCases/loadStores';
 
 export class GetStores {
   constructor(
