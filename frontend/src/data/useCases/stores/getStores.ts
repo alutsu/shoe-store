@@ -7,6 +7,6 @@ export class GetStores {
   ) {}
 
   async index(): Promise<void> {
-    await this.httpGetClient.get(this.url);
+    await this.httpGetClient.get({ url: this.url });
   }
 }
