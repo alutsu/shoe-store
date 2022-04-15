@@ -20,7 +20,13 @@ const StoreItem: React.FC<Props> = ({ store }: Props) => (
       {store.name}
     </td>
     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-      {store.inventories}
+      <span
+        className={`inline-flex rounded-full text-gray-600 px-2 text-xs font-semibold leading-5 ${
+          store.inventories > 900 ? 'bg-green-100' : 'bg-red-100'
+        } `}
+      >
+        {store.inventories}
+      </span>
     </td>
     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
       {store.total_orders}
