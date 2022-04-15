@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './presentation/Header/Header';
 import Dashboard from './presentation/pages/Dashboard';
 import ListShoeModels from './presentation/pages/ListShoeModels';
+import ListStoreEvents from './presentation/pages/ListStoreEvents';
 import ListStores from './presentation/pages/ListStores';
 
 const App: React.FC = () => (
@@ -14,6 +15,7 @@ const App: React.FC = () => (
         <Route path="/" element={<Dashboard />} />
         <Route path="/stores" element={<ListStores />} />
         <Route path="/stores/:store_id" element={<ListShoeModels />} />
+        <Route path="/store-events" element={<ListStoreEvents />} />
       </Routes>
     </div>
   </Router>
