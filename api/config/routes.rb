@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :dashboard do
         resources :stores, only: %i[index show]
+        resources :store_events, only: %i[index]
       end
     end
   end
