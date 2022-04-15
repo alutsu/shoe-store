@@ -36,6 +36,10 @@ const ShoeModelsContextProvider: React.FC<any> = ({ children }: any) => {
       setStore(response.data);
     }
     loadStores();
+
+    const interval = setInterval(() => loadStores(), 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

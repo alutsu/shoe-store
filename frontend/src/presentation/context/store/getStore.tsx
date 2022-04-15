@@ -23,11 +23,15 @@ const StoreContextProvider: React.FC<any> = ({ children }: any) => {
   const [stores, setStores] = useState<Store[]>(DEFAULT_VALUES.stores);
 
   useEffect(() => {
-    async function loadStores() {
+    async function loadShoeModels() {
       const response = await axios.get('/stores');
       setStores(response.data);
     }
-    loadStores();
+    loadShoeModels();
+
+    const interval = setInterval(() => loadShoeModels(), 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
