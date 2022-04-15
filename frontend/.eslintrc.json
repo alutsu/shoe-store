@@ -13,7 +13,7 @@
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "object-curly-newline": ["error", { "consistent": true }],
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off",
     "class-methods-use-this": "off",
     "max-classes-per-file": "off",
@@ -28,6 +28,7 @@
     "operator-linebreak": "off",
     "arrow-body-style": "off",
     "react/jsx-one-expression-per-line": "off",
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "react/jsx-no-constructed-context-values": "off"
   }
 }

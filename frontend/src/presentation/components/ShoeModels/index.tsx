@@ -1,9 +1,9 @@
-import { StoreContext } from 'presentation/context/store/getStore';
 import React, { useContext } from 'react';
-import StoreItem from '../StoreItem';
+import { ShoeModelsContext } from 'presentation/context/store/getShoeModels';
+import ShoeModelItem from '../ShoeModelItem';
 
-const Stores: React.FC = () => {
-  const { stores } = useContext(StoreContext);
+const ShoeModels: React.FC = () => {
+  const { store } = useContext(ShoeModelsContext);
   return (
     <div className="mt-8 flex flex-col">
       <div className="-my-2 -mx-4 overflow-x-auto lg:-mx-8">
@@ -36,8 +36,8 @@ const Stores: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {stores.map((store) => (
-                  <StoreItem store={store} key={store.id} />
+                {store.shoe_models.map((shoe_model) => (
+                  <ShoeModelItem shoe_model={shoe_model} key={shoe_model.id} />
                 ))}
               </tbody>
             </table>
@@ -48,4 +48,4 @@ const Stores: React.FC = () => {
   );
 };
 
-export default Stores;
+export default ShoeModels;

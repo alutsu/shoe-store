@@ -1,9 +1,14 @@
 import React from 'react';
 
-const Dashboard: React.FC = () => (
-  <div className="px-4 sm:px-6 lg:px-8">
-    <h1>Dashboard!</h1>
-  </div>
-);
+import OverviewContextProvider from 'presentation/context/store/getOverview';
+import OverviewDashboard from 'presentation/components/OverviewDashboard';
+
+const Dashboard: React.FC = () => {
+  return (
+    <OverviewContextProvider>
+      <OverviewDashboard />
+    </OverviewContextProvider>
+  );
+};
 
 export default Dashboard;
