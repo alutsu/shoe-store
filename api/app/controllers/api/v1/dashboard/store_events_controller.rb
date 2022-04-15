@@ -7,18 +7,21 @@ module Api
         end
 
         def overview
-          @overview = StoreEvent.select('count(*) as total')
+          @overview = StoreEvent.where(created_at: 2.hours.ago..Time.now)
+                                .select("COUNT(*) FILTER (WHERE name = 'increase') AS increase")
+                                .select("COUNT(*) FILTER (WHERE name = 'decrease') AS decrease")
                                 .select(
                                   "to_timestamp(
-                                    floor((extract('epoch' from created_at) / 1200))
-                                    * 1200
+                                    floor((extract('epoch' from created_at) / 600))
+                                    * 600
                                   )
-                                  AT TIME ZONE 'UTC' as interval"
+                                  AT TIME ZONE 'UTC+3' as interval"
                                 ).group('interval')
                                 .order('interval').map do |overview|
             {
-              interval: overview.interval.strftime('%Y-%m-%d %H:%M:%S'),
-              total: overview.total
+              interval: overview.interval.strftime('%H:%M'),
+              increase: overview.increase,
+              decrease: overview.decrease
             }
           end
         end

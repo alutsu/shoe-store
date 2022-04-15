@@ -1,4 +1,5 @@
 json.array! @overview do |overview|
   json.interval overview[:interval]
-  json.total overview[:total]
+  json.increase overview[:increase]
+  json.decrease overview[:decrease]
 end
